@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import  datetime
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Float
 
 engine = create_engine('postgresql://action:action@localhost:5432/tbay')
 Session = sessionmaker(bind=engine)
@@ -23,18 +23,21 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
-print 'after class item'
+print 'after class user'
 
 class Bid(Base):
     __tablename__="bid"
     
     id = Column(Integer, primary_key=True)
-    price = Column(Floating, nullable=False)
+    price = Column(Float, nullable=False)
     
-print 'after base'
+print 'after bid'
     
 Base.metadata.create_all(engine)
 
-print 'after Base'
+print 'last line'
+
+
+
 
 
